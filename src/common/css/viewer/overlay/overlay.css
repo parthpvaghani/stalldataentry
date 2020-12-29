@@ -1,0 +1,172 @@
+.overlaysplash {
+  height: var(--overlay-height);
+  width: var(--overlay-width);
+  /* background-color: rgba(10, 10, 10, 0.44); */
+  border-radius: 5px;
+  color: violet;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media (orientation: landscape) {
+  .portrait .overlaysplash {
+    height: var(--device-height);
+  }
+
+  .portrait #project-details {
+    opacity: 0;
+  }
+}
+
+.overlay__loading {
+  outline: none;
+}
+
+@media screen and (orientation: portrait) {
+  .overlaysplash {
+    grid-template-rows: repeat(2, 50%);
+  }
+}
+
+@media (orientation: landscape) {
+  .overlay__loading {
+    grid-column: 7/11;
+    grid-row: 1/-1;
+    justify-self: center;
+    align-self: center;
+  }
+}
+
+@media (orientation: portrait) {
+  .overlay__loading {
+    grid-column: 1/-1;
+    grid-row: 2/-1;
+    justify-self: center;
+    align-self: center;
+  }
+
+  /* .overlay__loading img {
+    height: 50%;
+  } */
+}
+
+.overlay__enter-circle {
+  opacity: 0;
+}
+
+.lds-eclipse {
+  background: none;
+}
+
+.overlay__rotating-arc--fadeout {
+  fill: white;
+
+  animation-name: overlayRotatingArcFadeout;
+  animation-duration: 1.5s;
+  animation-delay: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.overlay__enter-circle--fadein {
+  fill: white;
+
+  animation-name: overlayEnterCircleFadein;
+  animation-duration: 1.5s;
+  animation-delay: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes overlayRotatingArcFadeout {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes overlayEnterCircleFadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.overlay__close {
+  position: absolute;
+  right: 2.5%;
+  top: 2.5%;
+  height: var(--bottom-pa-height);
+  transform: scale(1.5);
+  z-index: 3;
+  outline: none;
+}
+
+@media (max-width: 1920px) {
+  .overlay__close {
+    right: 2.5%;
+    top: 4.5%;
+    transform: scale(1.5);
+  }
+}
+
+@media (max-width: 1366px) {
+  .overlay__close {
+    right: 2.5%;
+    top: 2.5%;
+    transform: scale(1.5);
+  }
+}
+
+@media (max-width: 1024px) {
+  .landscape .overlay__close {
+    right: 2.5%;
+    top: 4.5%;
+    transform: scale(1.5);
+  }
+
+  .portrait .overlay__close {
+    right: 2.5%;
+    top: 2.5%;
+    transform: scale(1.5);
+  }
+}
+
+@media (max-width: 768px) {
+  .portrait .overlay__close {
+    right: 2.5%;
+    top: 3.5%;
+    transform: scale(1.5);
+  }
+
+  .landscape .overlay__close {
+    right: 2.5%;
+    top: 4.5%;
+    transform: scale(1.5);
+  }
+}
+
+@media (max-aspect-ratio: 1/2) {
+  .portrait .overlay__close {
+    right: 4.5%;
+    top: 3.5%;
+    transform: scale(1.5);
+  }
+}
+
+@media (max-width: 360px) {
+  .overlay__close {
+    right: 2.5%;
+    top: 2.5%;
+    transform: scale(1.5);
+  }
+}

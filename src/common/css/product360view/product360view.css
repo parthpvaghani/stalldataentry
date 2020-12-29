@@ -1,0 +1,18 @@
+.spritespin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  /* width: 40% !important; */
+}
+
+/* 
+.MuiDialog-paperWidthMd {
+  width: 700px !important;
+  height: 80% !important;
+}
+
+.productdialoguewidth {
+  width: 700px;
+  height: 80%;
+} */

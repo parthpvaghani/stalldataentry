@@ -1,0 +1,248 @@
+.splash__projectname {
+  font-size: 3em;
+  overflow-wrap: break-word;
+  position: absolute;
+  bottom: 10%;
+  font-weight: 700;
+}
+
+.splash__desc {
+  font-size: 16px;
+  /* margin: 0; */
+  padding: 2%;
+}
+
+.splash {
+  grid-column: 2 / 7;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  width: 100%;
+  color: #2e3192;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: 'DM Serif Display', serif;
+
+}
+
+/* TODO: Use proper class names */
+.splash__logo {
+  width: 100%;
+  padding-top: 33.333333%;
+  position: relative;
+  max-width: 70rem;
+}
+
+.logo-grayscale,
+.logo-colorful {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+
+.logo-grayscale {
+  width: 100%;
+  z-index: 1;
+  filter: grayscale(100%);
+  opacity: 0.6;
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+}
+
+.logo-colorful {
+  z-index: 2;
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  width: 0;
+  transition-property: width;
+  transition-duration: 0.8s;
+  transition-timing-function: ease-out;
+}
+
+/* ------------------------- MEDIA QUERIES START ------------------------- */
+
+.splash__projectname-container {
+  height: 30%;
+  position: relative;
+  top: 27.5%;
+}
+
+.splash__logo-container {
+  height: 100%;
+}
+
+.splash__desc-container {
+  height: 30%;
+  position: relative;
+  top: 27.5%;
+  width: 90%;
+  margin-left: 5%;
+}
+
+@media (orientation: landscape) {
+  .splash__projectname-container {
+    height: 25%;
+    top: 27.5%;
+  }
+
+  .splash__desc-container {
+    height: 20%;
+    top: 27.5%;
+  }
+}
+
+@media screen and (orientation: portrait) {
+  .splash {
+    grid-column: 1/-1;
+    grid-row: 1 / 2;
+    text-align: center;
+  }
+
+  /* .splash--only {
+    grid-row: 1 / 3;
+  } */
+
+  .splash__logo-container {
+    height: 100%;
+    display: grid;
+    grid-template-rows: '1fr 2fr 2fr 1fr';
+  }
+
+  .splash__logo-desc-container-height {
+    height: 100%;
+  }
+}
+
+@media screen and (orientation: landscape) {
+  .splash--only {
+    grid-column: 2 / -2;
+    text-align: center;
+  }
+}
+
+@media screen and (orientation: landscape) and (max-width: 480px) {
+  .splash {
+    grid-column: 1 / 7;
+    font-size: 1px;
+  }
+}
+
+/*
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+@media (min-width: 1281px) {
+  .splash {
+    font-size: 24px;
+  }
+}
+
+/*
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .splash {
+    font-size: 24px;
+  }
+}
+
+/*
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .splash {
+    font-size: 24px;
+  }
+}
+
+/*
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  .splash {
+    font-size: 24px;
+  }
+}
+
+/*
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .splash {
+    font-size: 24px;
+  }
+}
+
+/*
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .splash {
+    font-size: 22px;
+  }
+}
+
+/* ------------------------- MEDIA QUERIES END ------------------------- */
+.splash__melzo-credit {
+  position: fixed;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  z-index: 500;
+  color: #2e3192;
+}
+
+.splash__melzo-hyperlink {
+  border-bottom: 2px solid;
+}
+
+.sizeprojectname {
+  font-size: 48px;
+}
+
+.spalshtext {
+  font-size: 24px;
+  font-family: 'Quicksand', sans-serif;
+  color: #2e3192;
+  margin-top: 20px;
+  line-height: 1.1;
+}
+
+.spalshtitle {
+  font-size: 35px !important;
+  font-family: "Quicksand";
+  line-height: 1.1;
+  color: #2e3192;
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+}
+
+@media(max-width:600px) {
+  .spalshtitle {
+    font-size: 20px;
+  }
+}
+
+.centerimg {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.widthspalshimg {
+  width: 50%;
+}

@@ -1,0 +1,160 @@
+.header {
+  position: fixed;
+  top: 0px;
+  height: var(--bottom-pa-height);
+  width: 100%;
+  z-index: 0;
+  background-image: linear-gradient(
+    to top,
+    rgba(41, 41, 41, 0),
+    rgba(30, 16, 0, 0.4)
+  );
+  /* background-color: blueviolet; */
+}
+
+.header__logo {
+  height: 85%;
+  outline: none;
+}
+
+.header__items {
+  margin: 0;
+  height: 90%;
+
+  display: flex;
+  align-items: center;
+  padding: 0px;
+  /* background: rgba(10, 10, 10, 0.1); */
+}
+
+.header__projectinfo {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  width: 60%;
+  max-width: 400px;
+}
+
+.header__right {
+  margin-left: auto;
+  display: flex;
+  max-width: 100px;
+}
+
+.header__signin {
+  border: solid 2px #fffffe;
+  border-radius: 999px;
+  color: white;
+  padding: 10px 10px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: 10px;
+}
+@media(max-width:600px){
+  .header__signin{
+    padding: 7px 10px;
+    margin-top: 10px;
+    
+  }
+}
+.header__thumbnail {
+  display: none;
+}
+
+.header__ham {
+  color: whitesmoke;
+  height: 50%;
+  padding: 0px 0.5%;
+  margin-right: 0.5%;
+  color: white;
+}
+
+/* ------------------------- MEDIA QUERIES START ------------------------- */
+
+/* #### PROJECT NAME #### */
+
+.header__projectname {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0;
+  font-weight: 500;
+  font-size: 30px;
+
+  text-align: start;
+}
+
+@media (max-width: 1440px) {
+  .header__projectname {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 1080px) {
+  .header__projectname {
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 640px) {
+  .header__projectname {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 360px) {
+  .header__projectname {
+    font-size: 15px;
+  }
+}
+
+/* ipad */
+
+@media (max-aspect-ratio: 3/4) and (max-height: 1024px) and (min-height: 1024px) {
+  .header__projectname {
+    font-size: 35px;
+  }
+}
+
+@media (max-aspect-ratio: 3/4) and (min-height: 1025px) {
+  .header__projectname {
+    font-size: 35px;
+  }
+}
+
+@media (max-aspect-ratio: 3/4) and (min-height: 1025px) {
+  .header__projectname {
+    font-size: 35px;
+  }
+}
+
+/* pixel 2 , iphone x */
+
+@media (min-aspect-ratio: 2/1) {
+  .header__projectname {
+    font-size: 20px;
+  }
+}
+
+@media (max-aspect-ratio: 1/2) and (orientation: portrait) {
+  .header__projectname {
+    font-size: 20px;
+  }
+}
+
+@media (max-height: 720px) and (orientation: landscape) {
+  .header {
+    grid-column: 1 / -1;
+    grid-row: 1 / 4;
+  }
+}
+
+@media (max-aspect-ratio: 3/4) and (max-height: 1024px) and (min-height: 1024px) {
+  :root {
+    --bottom-pa-height: 8vh;
+  }
+}
+
+/* ------------------------- MEDIA QUERIES END ------------------------- */

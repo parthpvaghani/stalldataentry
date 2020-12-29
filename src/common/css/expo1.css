@@ -1,0 +1,297 @@
+#leftmenu {
+  /* height: 99%; */
+  max-width: 130px;
+  min-width: 130px;
+  background: #fff;
+  /* color: #2e3192; */
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+  position: fixed;
+  z-index: 100;
+  bottom: 10px;
+  top: 10px;
+  left: 10px;
+  border-radius: 20px;
+}
+
+.list-unstyled {
+  list-style-type: none;
+}
+
+.flexcolumnicon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 0px;
+  margin-top: 0;
+  margin-bottom: 0;
+
+  /* padding: 10px; */
+  /* padding-left: 10px; */
+
+}
+
+@media(max-width:600px) {
+  .flexicon {
+    width: 95%;
+    justify-content: start;
+    overflow-x: auto;
+  }
+
+  .flexcolumnicon {
+    height: 600px;
+    overflow-y: auto;
+  }
+}
+
+.widthicontheme1 {
+  width: 40px;
+  margin: 0 auto;
+
+}
+
+.flexcolumn1 {
+  display: flex;
+  flex-direction: column;
+  /* width: 120px; */
+  /* margin: 5px 10px; */
+  cursor: pointer;
+  background: white;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  height: 60px;
+  margin-bottom: 8px;
+}
+
+
+
+.icontext {
+  text-align: center;
+  font-size: 12px;
+  /* font-weight: bold; */
+  font-family: 'Montserrat', sans-serif;
+  color: #2e3192;
+  margin-right: 5px;
+  line-height: 1.1;
+}
+
+#filterbg:hover {
+  background-color: #2e3192;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 10px;
+}
+
+/* change image on hover  */
+#filterbg:hover #filtericon {
+  content: url('../../common/images/expo1icon/filter\ w.png');
+}
+
+#filterbg:hover #filtertext {
+  color: #fff;
+}
+
+#vrbg:hover {
+  background-color: #2e3192;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 10px;
+}
+
+/* change image on hover  */
+#vrbg:hover #vricon {
+  content: url('../../common/images/expo1icon/vr\ w.png');
+}
+
+#vrbg:hover #vrtext {
+  color: #fff;
+}
+
+#Tiltbg:hover {
+  background-color: #2e3192;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 10px;
+}
+
+/* change image on hover  */
+#Tiltbg:hover #Tilticon {
+  content: url('../../common/images/expo1icon/tilt\ w.png');
+}
+
+#Tiltbg:hover #Tilttext {
+  color: #fff;
+}
+
+#Chatbg:hover {
+  background-color: #2e3192;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 10px;
+}
+
+/* change image on hover  */
+#Chatbg:hover #Chaticon {
+  content: url('../../common/images/expo1icon/chat\ w.png');
+}
+
+#Chatbg:hover #Chattext {
+  color: #fff;
+}
+
+#Hallbg:hover {
+  background-color: #2e3192;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 10px;
+}
+
+/* change image on hover  */
+#Hallbg:hover #Hallicon {
+  content: url('../../common/images/expo1icon/exhibitionhallw.png');
+}
+
+#Hallbg:hover #Halltext {
+  color: #fff;
+}
+
+#infobg:hover {
+  background-color: #2e3192;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 10px;
+}
+
+/* change image on hover  */
+#infobg:hover #infoicon {
+  content: url('../../common/images/expo1icon/info\ w.png');
+}
+
+#infobg:hover #infotext {
+  color: #fff;
+}
+
+#helpbg:hover {
+  background-color: #2e3192;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 10px;
+}
+
+/* change image on hover  */
+#helpbg:hover #helpicon {
+  content: url('../../common/images/expo1icon/help\ w.png');
+}
+
+#helpbg:hover #helptext {
+  color: #fff;
+}
+
+@media(max-width:600px) {
+  .posoitionlogo {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+.posoitionlogoright {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  /* background-color: white; */
+  /* width: 100px; */
+  /* height: 100px; */
+  z-index: 100;
+  /* padding: 10px; */
+  /* border-radius: 50%; */
+  /* box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.75); */
+  /* display: flex; */
+}
+
+@media(max-width:600px) {
+  .posoitionlogoright {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+.scrollbar-style::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.scrollbar-style::-webkit-scrollbar {
+  height: 6px;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.scrollbar-style::-webkit-scrollbar-thumb {
+  background-color: #b2b3b3;
+}
+
+.footer {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  top: auto;
+  z-index: 100;
+}
+
+.footer-text {
+  font-size: 1.2vw;
+  text-align: center;
+  color: #2e3192;
+  margin-bottom: 0px;
+  text-decoration: none;
+  font-family: "Montserrat";
+
+}
+
+
+@media(max-width:600px) {
+  .footer-text {
+    text-align: center;
+    color: black;
+    font-size: 10px;
+    margin-bottom: 0px;
+  }
+
+
+}
+
+.widthlogo {
+  width: 120px;
+}
+
+.expomargintop {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.expomarginbottom {
+  margin-top: 5px;
+  margin-top: 5px;
+
+}
+
+.widthlogoexpo1 {
+  width: 80px;
+  margin: 0 auto;
+}
+
+.marqueepositionexpo1 {
+  position: fixed;
+  right: 0;
+  height: 100%;
+
+}
+
+.marqueeheightexpo1 {
+  height: 100%;
+}
+
+.marqueeimgexpo1 {
+  margin-bottom: 0.7rem;
+  display: block;
+}

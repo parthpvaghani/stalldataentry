@@ -1,0 +1,44 @@
+:root {
+  --main-bg-color: brown;
+  --primary: rgb(127, 174, 65);
+  --primary-t1: rgba(127, 174, 65, 0.85);
+  --primary-t2: rgba(127, 174, 65, 0.65);
+  --primary-t3: rgba(127, 174, 65, 0.45);
+  --primary-t4: rgba(127, 174, 65, 0.25);
+  /**/
+  --secondary: rgb(212, 212, 212);
+  --secondary-t1: rgba(212, 212, 212, 0.85);
+  --secondary-t2: rgba(212, 212, 212, 0.65);
+  --secondary-t3: rgba(212, 212, 212, 0.45);
+  --secondary-t4: rgba(212, 212, 212, 0.25);
+  /**/
+  --secondary-dark: rgb(148, 148, 148);
+  --secondary-dark-t1: rgb(148, 148, 148, 0.85);
+  --secondary-dark-t2: rgb(148, 148, 148, 0.65);
+  --secondary-dark-t3: rgb(148, 148, 148, 0.45);
+  --secondary-dark-t4: rgb(148, 148, 148, 0.25);
+  /**/
+  --ui-primary: rgb(38, 50, 56);
+  --ui-primary-t1: rgba(38, 50, 56, 0.85);
+  --ui-primary-t2: rgba(38, 50, 56, 0.65);
+  --ui-primary-t3: rgba(38, 50, 56, 0.45);
+  --ui-primary-t4: rgba(38, 50, 56, 0.25);
+  /**/
+  --ui-secondary: rgb(84, 110, 122);
+  --ui-secondary-t1: rgba(84, 110, 122, 0.85);
+  --ui-secondary-t2: rgba(84, 110, 122, 0.65);
+  --ui-secondary-t3: rgba(84, 110, 122, 0.45);
+  --ui-secondary-t4: rgba(84, 110, 122, 0.25);
+  /**/
+  --ui-primary-dark: rgb(46, 49, 146);
+  --ui-primary-dark-t1: rgba(15, 22, 25, 0.85);
+  --ui-primary-dark-t2: rgba(15, 22, 25, 0.65);
+  --ui-primary-dark-t3: rgba(15, 22, 25, 0.45);
+  --ui-primary-dark-t4: rgba(15, 22, 25, 0.25);
+  /**/
+  --ui-danger: rgb(244, 67, 54);
+  --ui-danger-t1: rgba(244, 67, 54, 0.85);
+  --ui-danger-t2: rgba(244, 67, 54, 0.65);
+  --ui-danger-t3: rgba(244, 67, 54, 0.45);
+  --ui-danger-t4: rgba(244, 67, 54, 0.25);
+}

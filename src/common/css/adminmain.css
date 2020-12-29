@@ -1,0 +1,61 @@
+html,
+body {
+  -webkit-overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.margintopleft {
+  margin-top: 94px;
+  margin-left: 260px;
+  width: 100%;
+}
+
+@media(max-width:1200px) {
+  .margintopleft {
+    margin-left: 0;
+  }
+}
+
+.widthlogoadmin {
+  width: 150px;
+}
+
+.centertitleadmin {
+  display: flex;
+  width: 100%;
+  /* justify-content: center; */
+}
+
+/* .MuiButton-root {
+
+  color: black !important;
+} */
+.blackcolor {
+  color: black !important;
+  border-bottom: 0 !important;
+}
+
+.MuiTableCell-body {
+  color: black !important;
+}
+
+.MuiTableCell-root {
+  font-size: 1.1rem !important;
+  padding: 10px !important;
+}
+
+.MuiAppBar-colorPrimary {
+  background-color: #2e3192 !important;
+}
+
+.MuiFormHelperText-root {
+  font-size: 0.9rem !important;
+}
+
+.overflowtable {
+  overflow: auto;
+}
+
+/* .borderzero {
+  border: 0 !important;
+} */

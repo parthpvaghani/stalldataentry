@@ -1,4 +1,4 @@
-/* eslint-disable no-constant-condition */
+/* eslint-disable */
 /* eslint-disable no-unused-vars */
 // import config from '../../common/constants/constants';
 import {

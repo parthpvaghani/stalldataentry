@@ -1,14 +1,13 @@
 import firebase from 'firebase';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDFh5uy3zfyl_QiJK9L_xGhaXJV069y0N8",
-    authDomain: "temp-f2d4e.firebaseapp.com",
-    databaseURL: "https://temp-f2d4e.firebaseio.com",
-    projectId: "temp-f2d4e",
-    storageBucket: "temp-f2d4e.appspot.com",
-    messagingSenderId: "372170167593",
-    appId: "1:372170167593:web:672db772aa9ba7a4155338",
-    measurementId: "G-ELN3Q5GM9D"
+  apiKey: "AIzaSyCZom22SCaq1uuerI2mDcdpTxqwE0od9CA",
+  authDomain: "ppt-vr.firebaseapp.com",
+  databaseURL: "https://ppt-vr.firebaseio.com",
+  projectId: "ppt-vr",
+  storageBucket: "ppt-vr.appspot.com",
+  messagingSenderId: "200196049991",
+  appId: "1:200196049991:web:91d3d74f981f239c00b562"
   };
 firebase.initializeApp(firebaseConfig);
 

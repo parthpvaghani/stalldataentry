@@ -102,6 +102,52 @@ const StallDetailedForm = ({ className, redirectBack, ...rest }) => {
     title: "",
     subTitle: "",
   });
+
+  const [certificationImage, setCertificationImage] = useState("");
+  const [certificationUrl, setCertificationUrl] = useState([]);
+
+  const [Files, setFiles] = useState("");
+  const [FilesUrl, setFilesUrl] = useState([]);
+
+  const allInputs = { imgUrl: "" };
+  const [stallBanner, setStallBanner] = useState("");
+  const [profileCompletion, setProfileCompletion] = useState("");
+  const [stallBannerUrl, setStallBannerUrl] = useState(allInputs);
+  const [MultipaleProduct, setMultipaleProduct] = useState([]);
+
+  const [values, setValues] = useState({
+    // text fields
+    developername: "",
+    projectname: "",
+    contactdetail: "",
+    chatlink: "",
+    backlinkprojectid: "",
+    backlink: "",
+    like: "",
+    projectid: "",
+    developerlink: "",
+    location: "",
+    viewerlink: "",
+    // images
+    developerlogo:'',
+    imagepanel1:'',
+    imagepanel2:'',
+    imagepanel3:'',
+    projectlogo:'',
+    inroperspectivegif:'',
+    standeepanel1:'',
+    standeepanel2:'',
+    // video
+    projectofferflash:'',
+    introvideopanel:'',
+    // dropdown
+    projectbudget:[],
+    projectconfig:[],
+    projectsizerange:[],
+    // document
+    projectbrochure:'',
+  });
+
   const handleTabChange = (event, newValue) => {
     setTabValue(newValue);
   };
@@ -135,6 +181,7 @@ const StallDetailedForm = ({ className, redirectBack, ...rest }) => {
   };
 
   useEffect(() => {
+   
     // const Uid = localStorage.getItem("uid");
     // const firestore = firebase.firestore();
     // const dbQuery = new Promise((a, z) => {
@@ -164,7 +211,7 @@ const StallDetailedForm = ({ className, redirectBack, ...rest }) => {
     //     imgList = allData.src;
     //     setValues({
     //       ...values,
-    //       companyname: allData.companyName ? allData.companyName : "",
+    //       developername: allData.companyName ? allData.companyName : "",
     //       companyprofile: allData.description ? allData.description : "",
     //       contactnumber: allData.contactNo ? allData.contactNo : "",
     //       establishedyear: allData.establishedYear
@@ -273,48 +320,6 @@ const StallDetailedForm = ({ className, redirectBack, ...rest }) => {
   };
   const classes = useStyles();
 
-  const [certificationImage, setCertificationImage] = useState("");
-  const [certificationUrl, setCertificationUrl] = useState([]);
-
-  const [Files, setFiles] = useState("");
-  const [FilesUrl, setFilesUrl] = useState([]);
-
-  const allInputs = { imgUrl: "" };
-  const [stallBanner, setStallBanner] = useState("");
-  const [profileCompletion, setProfileCompletion] = useState("");
-  const [stallBannerUrl, setStallBannerUrl] = useState(allInputs);
-
-  const [values, setValues] = useState({
-    companyname: "",
-    companyprofile: "",
-    whatsappnumber: "",
-    contactnumber: "",
-    alternatenumber: "",
-    contactemail: "",
-    establishedyear: "",
-    noofcertificates: "",
-    productcategory: "",
-    website: "",
-    country: "",
-    market: "",
-    brands: "",
-    fblink: "",
-    iglink: "",
-    twitterlink: "",
-    pinterestlink: "",
-    linkedinlink: "",
-    stallvisibility: false,
-    contactvisibility: false,
-    socialmediavisibility: false,
-    availableFrom: "",
-    availableTo: "",
-    stallPassword: "",
-    city: "",
-    state: "",
-    address: "",
-    certificationurl: [],
-    fileurl: [],
-  });
 
   const handleChange = (event) => {
     console.log(event.target.name);
@@ -323,6 +328,7 @@ const StallDetailedForm = ({ className, redirectBack, ...rest }) => {
       [event.target.name]: event.target.value,
     });
   };
+
   const setProfileCompletionFunc = () => {
     const getCompletionData = new Promise((resolve, reject) => {
       firebase
@@ -357,10 +363,13 @@ const StallDetailedForm = ({ className, redirectBack, ...rest }) => {
     setCertificationImage(e.target.files[0]);
   };
 
-  const handleStallBannerChange = (e) => {
+  const handleImageChange = (e) => {
     e.preventDefault();
     const image = e.target.files[0];
-    setStallBanner(e.target.files[0]);
+    setValues({
+      ...values,
+      [e.target.name]: e.target.files[0],
+    });
   };
 
   // ------------Multipale select-----------------
@@ -375,17 +384,22 @@ const StallDetailedForm = ({ className, redirectBack, ...rest }) => {
     },
   };
 
-  const [MultipaleProduct, setMultipaleProduct] = useState([]);
 
   const handleChangeDropdown = (event) => {
-    setMultipaleProduct(event.target.value);
+    setValues({
+      ...values,
+      [event.target.name]:event.target.value,
+    });
   };
 
   // ------------RAdio Button -----------------
   // social media buttons visibility
 
   const handleChangeDropZone = (files) => {
-    setCertificationImage(files);
+    setValues({
+      ...values,
+      projectbrochure:files
+    });
   };
 
   const handleFileChangeDropZone = (files) => {
@@ -473,13 +487,6 @@ const StallDetailedForm = ({ className, redirectBack, ...rest }) => {
 
   return (
     <div>
-      {/* <Box p={1} label="profile completion">
-        <Typography color="primary">Profile Completion</Typography>
-        <LinearProgress
-          variant="determinate"
-          value={(profileCompletion / 32) * 100}
-        />
-      </Box> */}
       <form
         autoComplete="off"
         noValidate
@@ -497,11 +504,11 @@ const StallDetailedForm = ({ className, redirectBack, ...rest }) => {
               <TabContext value={tabValue}>
                 <AppBar position="static">
                   <TabList onChange={handleTabChange} aria-label="profiletab">
-                    <Tab label="Profile" value="1" />
-                    <Tab label="Social Media" value="2" />
-                    <Tab label="Privacy" value="3" />
-                    <Tab label="Certificate" value="4" />
-                    <Tab label="Product Catalogue" value="5" />
+                    <Tab label="Stall Primary Data" value="1" />
+                    <Tab label="Stall Images" value="2" />
+                    <Tab label="Stall Videos" value="3" />
+                    <Tab label="Stall Project Selectable" value="4" />
+                    <Tab label="Stall Documents" value="5" />
                   </TabList>
                 </AppBar>
                 <TabPanel value="1">
@@ -509,11 +516,11 @@ const StallDetailedForm = ({ className, redirectBack, ...rest }) => {
                     <Grid item md={6} xs={12}>
                       <TextField
                         fullWidth
-                        label="Company Name"
-                        name="companyname"
+                        label="Developer Name"
+                        name="developername"
                         onChange={handleChange}
                         required
-                        value={values.companyname}
+                        value={values.developername}
                         variant="outlined"
                       />
                     </Grid>
@@ -521,11 +528,11 @@ const StallDetailedForm = ({ className, redirectBack, ...rest }) => {
                       <TextField
                         fullWidth
                         multiline
-                        label="Company Profile"
-                        name="companyprofile"
+                        label="Project Name"
+                        name="projectname"
                         onChange={handleChange}
                         required
-                        value={values.companyprofile}
+                        value={values.projectname}
                         variant="outlined"
                       />
                     </Grid>
@@ -534,11 +541,11 @@ const StallDetailedForm = ({ className, redirectBack, ...rest }) => {
                       <TextField
                         type="number"
                         fullWidth
-                        label="Contact Number"
-                        name="contactnumber"
+                        label="Contact Detail"
+                        name="contactdetail"
                         onChange={handleChange}
                         required
-                        value={values.contactnumber}
+                        value={values.contactdetail}
                         variant="outlined"
                       />
                     </Grid>
@@ -547,11 +554,11 @@ const StallDetailedForm = ({ className, redirectBack, ...rest }) => {
                       <TextField
                         type="text"
                         fullWidth
-                        label="Established Year"
-                        name="establishedyear"
+                        label="Chat Link"
+                        name="chatlink"
                         onChange={handleChange}
                         required
-                        value={values.establishedyear}
+                        value={values.chatlink}
                         variant="outlined"
                       />
                     </Grid>
@@ -560,54 +567,18 @@ const StallDetailedForm = ({ className, redirectBack, ...rest }) => {
                       <TextField
                         type="number"
                         fullWidth
-                        label="No.of Certificates"
-                        name="noofcertificates"
+                        label="Back Link Project ID"
+                        name="backlinkprojectid"
                         onChange={handleChange}
                         required
-                        value={values.noofcertificates}
+                        value={values.backlinkprojectid}
                         variant="outlined"
                       />
                     </Grid>
 
-                    <Grid item md={6} xs={12}>
-                      <TextField
-                        id="time"
-                        label="Available From"
-                        type="time"
-                        name="availableFrom"
-                        value={values.availableFrom}
-                        helperText="Set Meeting Schedule Availability"
-                        onChange={handleChange}
-                        className={classes.textField}
-                        InputLabelProps={{
-                          shrink: true,
-                        }}
-                        inputProps={{
-                          step: 300, // 5 min
-                        }}
-                      />
-                    </Grid>
 
-                    <Grid item md={6} xs={12}>
-                      <TextField
-                        id="time"
-                        label="Available To"
-                        type="time"
-                        name="availableTo"
-                        value={values.availableTo}
-                        helperText="Set Meeting Schedule Availability"
-                        onChange={handleChange}
-                        className={classes.textField}
-                        InputLabelProps={{
-                          shrink: true,
-                        }}
-                        inputProps={{
-                          step: 300, // 5 min
-                        }}
-                      />
-                    </Grid>
 
-                    <Grid item md={12} xs={12}>
+                    {/* <Grid item md={12} xs={12}>
                       <FormControl
                         variant="outlined"
                         className={classes.formControl}
@@ -642,18 +613,18 @@ const StallDetailedForm = ({ className, redirectBack, ...rest }) => {
                           ))}
                         </Select>
                       </FormControl>
-                    </Grid>
+                    </Grid> */}
 
                     <Grid item md={6} xs={12}>
                       <TextField
                         type="text"
                         fullWidth
-                        label="Website"
+                        label="backlink"
                         helperText="Please enter web address with http/https"
                         name="website"
                         onChange={handleChange}
                         required
-                        value={values.website}
+                        value={values.backlink}
                         variant="outlined"
                       />
                     </Grid>
@@ -662,11 +633,11 @@ const StallDetailedForm = ({ className, redirectBack, ...rest }) => {
                       <TextField
                         type="text"
                         fullWidth
-                        label="Country to export"
-                        name="country"
+                        label="like"
+                        name="like"
                         onChange={handleChange}
                         required
-                        value={values.country}
+                        value={values.like}
                         variant="outlined"
                       />
                     </Grid>
@@ -675,11 +646,11 @@ const StallDetailedForm = ({ className, redirectBack, ...rest }) => {
                       <TextField
                         type="text"
                         fullWidth
-                        label="Major Market"
-                        name="market"
+                        label="Project Id"
+                        name="projectid"
                         onChange={handleChange}
                         required
-                        value={values.market}
+                        value={values.projectid}
                         variant="outlined"
                       />
                     </Grid>
@@ -688,11 +659,11 @@ const StallDetailedForm = ({ className, redirectBack, ...rest }) => {
                       <TextField
                         type="text"
                         fullWidth
-                        label="Major Brands"
-                        name="brands"
+                        label="Developer Link"
+                        name="developerlink"
                         onChange={handleChange}
                         required
-                        value={values.brands}
+                        value={values.developerlink}
                         variant="outlined"
                       />
                     </Grid>
@@ -712,11 +683,11 @@ const StallDetailedForm = ({ className, redirectBack, ...rest }) => {
                       <TextField
                         type="text"
                         fullWidth
-                        label="City"
-                        name="city"
+                        label="Location"
+                        name="location"
                         onChange={handleChange}
                         required
-                        value={values.city}
+                        value={values.location}
                         variant="outlined"
                       />
                     </Grid>
@@ -724,22 +695,26 @@ const StallDetailedForm = ({ className, redirectBack, ...rest }) => {
                       <TextField
                         type="text"
                         fullWidth
-                        label="Address"
-                        name="address"
+                        label="Viewer Link"
+                        name="viewerlink"
                         onChange={handleChange}
                         required
-                        value={values.address}
+                        value={values.viewerlink}
                         variant="outlined"
                       />
                     </Grid>
-                    <Grid item md={6} xs={12}>
-                      <label htmlFor="stallBanner">
+                   
+                  </Grid>
+                </TabPanel>
+                <TabPanel value="2">
+                  <Grid item md={6} xs={12}>
+                      <label htmlFor="developerlogo">
                         <input
                           style={{ display: "none" }}
-                          id="stallBanner"
-                          name="stallBanner"
+                          id="developerlogo"
+                          name="developerlogo"
                           type="file"
-                          onChange={handleStallBannerChange}
+                          onChange={handleImageChange}
                         />
                         <Fab
                           color="primary"
@@ -748,110 +723,228 @@ const StallDetailedForm = ({ className, redirectBack, ...rest }) => {
                           aria-label="add"
                           variant="extended"
                         >
-                          <AddIcon /> Upload Stall Logo
+                          <AddIcon /> Upload Developer Logo
                         </Fab>
                       </label>
                       <br />
-                      <span>{stallBanner.name}</span>
+                      <span>{values.developerlogo.name}</span>
                     </Grid>
-                  </Grid>
-                </TabPanel>
-                <TabPanel value="2">
-                  <Grid container spacing={3}>
+                    <br/>
                     <Grid item md={6} xs={12}>
-                      <TextField
-                        type="number"
-                        fullWidth
-                        helperText="Please enter whatsapp number"
-                        label="Whatsapp Number"
-                        name="whatsappnumber"
-                        onChange={handleChange}
-                        value={values.whatsappnumber}
-                        variant="outlined"
-                      />
+                      <label htmlFor="imagepanel1">
+                        <input
+                          style={{ display: "none" }}
+                          id="imagepanel1"
+                          name="imagepanel1"
+                          type="file"
+                          onChange={handleImageChange}
+                        />
+                        <Fab
+                          color="primary"
+                          size="small"
+                          component="span"
+                          aria-label="add"
+                          variant="extended"
+                        >
+                          <AddIcon /> Upload imagepanel1 Logo
+                        </Fab>
+                      </label>
+                      <br />
+                      <span>{values.imagepanel1.name}</span>
+                    </Grid>
+                    <br/>
+                    <Grid item md={6} xs={12}>
+                      <label htmlFor="imagepanel2">
+                        <input
+                          style={{ display: "none" }}
+                          id="imagepanel2"
+                          name="imagepanel2"
+                          type="file"
+                          onChange={handleImageChange}
+                        />
+                        <Fab
+                          color="primary"
+                          size="small"
+                          component="span"
+                          aria-label="add"
+                          variant="extended"
+                        >
+                          <AddIcon /> Upload imagepanel2 Logo
+                        </Fab>
+                      </label>
+                      <br />
+                      <span>{values.imagepanel2.name}</span>
+                    </Grid>
+                    <br/>
+                    <Grid item md={6} xs={12}>
+                      <label htmlFor="imagepanel3">
+                        <input
+                          style={{ display: "none" }}
+                          id="imagepanel3"
+                          name="imagepanel3"
+                          type="file"
+                          onChange={handleImageChange}
+                        />
+                        <Fab
+                          color="primary"
+                          size="small"
+                          component="span"
+                          aria-label="add"
+                          variant="extended"
+                        >
+                          <AddIcon /> Upload imagepanel3 Logo
+                        </Fab>
+                      </label>
+                      <br />
+                      <span>{values.imagepanel3.name}</span>
+                    </Grid>
+                    <br/>
+                    <Grid item md={6} xs={12}>
+                      <label htmlFor="projectlogo">
+                        <input
+                          style={{ display: "none" }}
+                          id="projectlogo"
+                          name="projectlogo"
+                          type="file"
+                          onChange={handleImageChange}
+                        />
+                        <Fab
+                          color="primary"
+                          size="small"
+                          component="span"
+                          aria-label="add"
+                          variant="extended"
+                        >
+                          <AddIcon /> Upload projectlogo Logo
+                        </Fab>
+                      </label>
+                      <br />
+                      <span>{values.projectlogo.name}</span>
+                    </Grid>
+                    <br/>
+                    <Grid item md={6} xs={12}>
+                      <label htmlFor="inroperspectivegif">
+                        <input
+                          style={{ display: "none" }}
+                          id="inroperspectivegif"
+                          name="inroperspectivegif"
+                          type="file"
+                          onChange={handleImageChange}
+                        />
+                        <Fab
+                          color="primary"
+                          size="small"
+                          component="span"
+                          aria-label="add"
+                          variant="extended"
+                        >
+                          <AddIcon /> Upload inroperspectivegif Logo
+                        </Fab>
+                      </label>
+                      <br />
+                      <span>{values.inroperspectivegif.name}</span>
                     </Grid>
 
+                    <br/>
                     <Grid item md={6} xs={12}>
-                      <TextField
-                        type="number"
-                        fullWidth
-                        helperText="Please enter alternate number"
-                        label="Alternate Number(Land Line)"
-                        name="alternatenumber"
-                        onChange={handleChange}
-                        value={values.alternatenumber}
-                        variant="outlined"
-                      />
-                    </Grid>
-                    <hr />
-                    <Grid item md={6} xs={12}>
-                      <TextField
-                        type="text"
-                        fullWidth
-                        helperText="Please enter Contact Email"
-                        label="Contact Email"
-                        name="contactemail"
-                        onChange={handleChange}
-                        value={values.contactemail}
-                        variant="outlined"
-                      />
+                      <label htmlFor="standeepanel1">
+                        <input
+                          style={{ display: "none" }}
+                          id="standeepanel1"
+                          name="standeepanel1"
+                          type="file"
+                          onChange={handleImageChange}
+                        />
+                        <Fab
+                          color="primary"
+                          size="small"
+                          component="span"
+                          aria-label="add"
+                          variant="extended"
+                        >
+                          <AddIcon /> Upload standeepanel1 Logo
+                        </Fab>
+                      </label>
+                      <br />
+                      <span>{values.standeepanel1.name}</span>
                     </Grid>
 
+                    <br/>
                     <Grid item md={6} xs={12}>
-                      <TextField
-                        type="text"
-                        fullWidth
-                        helperText="Please enter Instagram Url"
-                        label="Instagram Url"
-                        name="iglink"
-                        onChange={handleChange}
-                        value={values.iglink}
-                        variant="outlined"
-                      />
+                      <label htmlFor="standeepanel2">
+                        <input
+                          style={{ display: "none" }}
+                          id="standeepanel2"
+                          name="standeepanel2"
+                          type="file"
+                          onChange={handleImageChange}
+                        />
+                        <Fab
+                          color="primary"
+                          size="small"
+                          component="span"
+                          aria-label="add"
+                          variant="extended"
+                        >
+                          <AddIcon /> Upload standeepanel2 Logo
+                        </Fab>
+                      </label>
+                      <br />
+                      <span>{values.standeepanel2.name}</span>
                     </Grid>
-
-                    <Grid item md={6} xs={12}>
-                      <TextField
-                        type="text"
-                        fullWidth
-                        helperText="Please enter Twitter Url"
-                        label="Twitter Url"
-                        name="twitterlink"
-                        onChange={handleChange}
-                        value={values.twitterlink}
-                        variant="outlined"
-                      />
-                    </Grid>
-
-                    <Grid item md={6} xs={12}>
-                      <TextField
-                        type="text"
-                        fullWidth
-                        helperText="Please enter Pinterest Url"
-                        label="Pinterest Url"
-                        name="pinterestlink"
-                        onChange={handleChange}
-                        value={values.pinterestlink}
-                        variant="outlined"
-                      />
-                    </Grid>
-
-                    <Grid item md={6} xs={12}>
-                      <TextField
-                        type="text"
-                        fullWidth
-                        helperText="Please enter linkedin link"
-                        label="Linkedin Url"
-                        name="linkedinlink"
-                        onChange={handleChange}
-                        value={values.linkedinlink}
-                        variant="outlined"
-                      />
-                    </Grid>
-                  </Grid>
+               
                 </TabPanel>
                 <TabPanel value="3">
-                  <Grid container spacing={3}>
+              <Grid item md={6} xs={12}>
+                      <label htmlFor="projectofferflash">
+                        <input
+                          style={{ display: "none" }}
+                          id="projectofferflash"
+                          name="projectofferflash"
+                          type="file"
+                          onChange={handleImageChange}
+                        />
+                        <Fab
+                          color="primary"
+                          size="small"
+                          component="span"
+                          aria-label="add"
+                          variant="extended"
+                        >
+                          <AddIcon /> Upload Project Offer Flash 
+                        </Fab>
+                      </label>
+                      <br />
+                      <span>{values.projectofferflash.name}</span>
+                    </Grid>
+                    <br/>
+
+                    <Grid item md={6} xs={12}>
+                      <label htmlFor="introvideopanel">
+                        <input
+                          style={{ display: "none" }}
+                          id="introvideopanel"
+                          name="introvideopanel"
+                          type="file"
+                          onChange={handleImageChange}
+                        />
+                        <Fab
+                          color="primary"
+                          size="small"
+                          component="span"
+                          aria-label="add"
+                          variant="extended"
+                        >
+                          <AddIcon /> Upload Intro Video Panel 
+                        </Fab>
+                      </label>
+                      <br />
+                      <span>{values.introvideopanel.name}</span>
+                    </Grid>
+
+
+
+                  {/* <Grid container spacing={3}>
                     <Grid item md={6} xs={6}>
                       <div>
                         <div>Social Media Privacy</div>
@@ -955,9 +1048,103 @@ const StallDetailedForm = ({ className, redirectBack, ...rest }) => {
                       </div>
                     </Grid>
                   </Grid>
+                */}
                 </TabPanel>
                 <TabPanel value="4">
+
                   <Grid item md={12} xs={12}>
+                      <FormControl
+                        variant="outlined"
+                        className={classes.formControl}
+                      >
+                        <InputLabel fullWidth id="demo-mutiple-checkbox-label">
+                        Project Budget
+                        </InputLabel>
+                        <Select
+                          labelId="demo-mutiple-checkbox-label"
+                          id="demo-mutiple-checkbox"
+                          multiple
+                          label="Project Budget"
+                          inputProps={{
+                            name: "Project Budget",
+                            id: "demo-mutiple-checkbox-label",
+                          }}
+                          value={values.projectbudget}
+                          onChange={handleChangeDropdown}
+                          renderValue={(selected) => selected.join(", ")}
+                        >
+                          {values.projectbudget.map((name) => (
+                            <MenuItem key={name.keyType} value={name.keyType}>
+                              {name}
+                            </MenuItem>
+                          ))}
+                        </Select>
+                      </FormControl>
+                    </Grid>
+                    <br/>
+                    <Grid item md={12} xs={12}>
+                      <FormControl
+                        variant="outlined"
+                        className={classes.formControl}
+                      >
+                        <InputLabel fullWidth id="demo-mutiple-checkbox-label">
+                        Project Config
+                        </InputLabel>
+                        <Select
+                          labelId="demo-mutiple-checkbox-label"
+                          id="demo-mutiple-checkbox"
+                          multiple
+                          label="Project Config"
+                          inputProps={{
+                            name: "Project Config",
+                            id: "demo-mutiple-checkbox-label",
+                          }}
+                          value={values.projectconfig}
+                          onChange={handleChangeDropdown}
+                          renderValue={(selected) => selected.join(", ")}
+                        >
+                          {values.projectconfig.map((name) => (
+                            <MenuItem key={name.keyType} value={name.keyType}>
+                              {name}
+                            </MenuItem>
+                          ))}
+                        </Select>
+                      </FormControl>
+                    </Grid>
+                    <br/>
+                    <Grid item md={12} xs={12}>
+                      <FormControl
+                        variant="outlined"
+                        className={classes.formControl}
+                      >
+                        <InputLabel fullWidth id="demo-mutiple-checkbox-label">
+                        Project Size Range
+                        </InputLabel>
+                        <Select
+                          labelId="demo-mutiple-checkbox-label"
+                          id="demo-mutiple-checkbox"
+                          multiple
+                          label="Project Size Range"
+                          inputProps={{
+                            name: "Project Size Range",
+                            id: "demo-mutiple-checkbox-label",
+                          }}
+                          value={values.projectsizerange}
+                          onChange={handleChangeDropdown}
+                          renderValue={(selected) => selected.join(", ")}
+                        >
+                          {values.projectsizerange.map((name) => (
+                            <MenuItem key={name.keyType} value={name.keyType}>
+                              {name}
+                            </MenuItem>
+                          ))}
+                        </Select>
+                      </FormControl>
+                    </Grid>
+
+
+
+                  {/* <Grid item md={12} xs={12}>
                     <h2>Uploaded Certification</h2>
                     <Grid item md={12} xs={12} className={classes.avatarimage}>
                       {values.certificationurl.map((url, index) => {
@@ -997,9 +1184,25 @@ const StallDetailedForm = ({ className, redirectBack, ...rest }) => {
                       </Grid>
                     </Grid>
                   </Grid>
+                 */}
                 </TabPanel>
                 <TabPanel value="5">
-                  <Grid item md={12} xs={12}>
+
+                <Grid container spacing={3}>
+                    <Grid>
+                      <Grid item md={12} xs={12}>
+                        <DropzoneArea
+                          maxFileSize={500000}
+                          filesLimit={1}
+                          dropzoneText="Upload  Your  Brochure  up  to  1  file  (Supported format : .pdf)  Brochure's  Link  will  be  visible  in  your  company's  Profile Brochure's will be updated in your stall."
+                          acceptedFiles={[".pdf"]}
+                          onChange={handleChangeDropZone}
+                        />
+                      </Grid>
+                    </Grid>
+                  </Grid>
+
+                  {/* <Grid item md={12} xs={12}>
                     <h2>Uploaded Catalogues</h2>
                     <Grid item md={12} xs={12} className={classes.avatarimage}>
                       {values.fileurl.map((url, index) => {
@@ -1052,13 +1255,21 @@ const StallDetailedForm = ({ className, redirectBack, ...rest }) => {
                       </Grid>
                     </Grid>
                   </Grid>
+                */}
                 </TabPanel>
               </TabContext>
             </div>
           </CardContent>
           <Divider />
           <Box display="flex" justifyContent="flex-end" p={2}>
-            {spin ? (
+          <Button
+                color="primary"
+                variant="contained"
+                onClick={() => onUpdateDetails()}
+              >
+                Update details
+              </Button>
+            {/* {spin ? (
               <CircularProgress
                 color="secondary"
                 style={{ margin: "5px" }}
@@ -1091,7 +1302,7 @@ const StallDetailedForm = ({ className, redirectBack, ...rest }) => {
               >
                 Update details
               </Button>
-            )}
+            )} */}
           </Box>
         </Card>
       </form>
@@ -1149,7 +1360,7 @@ const StallDetailedForm = ({ className, redirectBack, ...rest }) => {
             .doc(docid)
             .set(
               {
-                companyName: values.companyname,
+                companyName: values.developername,
                 description: values.companyprofile,
                 contactNo: values.contactnumber,
                 establishedYear: values.establishedyear,
@@ -1208,7 +1419,7 @@ const StallDetailedForm = ({ className, redirectBack, ...rest }) => {
           .doc(docid)
           .set(
             {
-              companyName: values.companyname,
+              companyName: values.developername,
               description: values.companyprofile,
               contactNo: values.contactnumber,
               establishedYear: values.establishedyear,
